@@ -22,21 +22,21 @@ class Menu
     return adult_total_price
   end
 
-  def get_child1_total(c1_count)
-    child1_total_price = self.price * c1_count
-    return child1_total_price
+  def get_child_total(c_count)
+    child_total_price = self.price * c_count
+    return child_total_price
   end
 
-  def get_child2_total(c2_count)
-    child2_total_price = self.price * c2_count
-    return child2_total_price
+  def get_baby_total(b_count)
+    baby_total_price = self.price * b_count
+    return baby_total_price
   end
 end
 
 
 menu1 = Menu.new(name: "大人", price: 1500)
-menu2 = Menu.new(name: "子供(6~18歳未満)", price: 1000)
-menu3 = Menu.new(name: "子供(6歳未満)", price: 0)
+menu2 = Menu.new(name: "子供", price: 1000)
+menu3 = Menu.new(name: "幼児", price: 500)
 
 menus = [menu1, menu2, menu3]
 
@@ -47,13 +47,13 @@ end
 puts "大人は何名ですか？"
 a_count = gets.chomp.to_i
 
-puts "子供(6~18歳未満)は何名ですか？"
+puts "子供は何名ですか？"
 c1_count = gets.chomp.to_i
 
-puts "子供(6歳未満)は何名ですか？"
+puts "幼児は何名ですか？"
 c2_count = gets.chomp.to_i
 
-total_count = a_count + c1_count + c2_count
-total_price = menu1.get_adult_total(a_count) + menu2.get_child1_total(c1_count) + menu3.get_child2_total(c2_count)
+total_count = a_count + c_count + b_count
+total_price = menu1.get_adult_total(a_count) + menu2.get_child_total(c_count) + menu3.get_baby_total(b_count)
 
 puts "#{total_count}名で#{total_price}円です"
